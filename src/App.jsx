@@ -1,33 +1,13 @@
-import React, { useRef, useState } from 'react';
-import { render } from 'react-dom'
-import { useDisclosure } from "@chakra-ui/react"
-
-import EmailEditor from 'react-email-editor';
 import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-  Button,
-  ButtonGroup,
-  Select,
-  Heading,
-  Flex,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import FirstFranklinBase from './Templates/1stFranklin'
-import HootersBase from './Templates/Hooters'
+  Box, Button,
+  ButtonGroup, ChakraProvider, Code, Flex, Grid, Heading, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, theme, useDisclosure
+} from "@chakra-ui/react";
+import React, { useRef, useState } from 'react';
+import EmailEditor from 'react-email-editor';
+import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import FirstFranklinBase from './Templates/1stFranklin';
+import HootersBase from './Templates/Hooters';
+
 
 export const App = (props: any) => {
   const emailEditorRef = useRef(null);
@@ -36,7 +16,7 @@ export const App = (props: any) => {
   const [curJson, setCurJson] = useState({})
   const exportHtml = () => {
     emailEditorRef.current.editor.exportHtml((data) => {
-      const { design, html } = data;
+      const { design } = data;
       console.log('data', data)
       setCurHtml(data)
       setCurJson(JSON.stringify(design))
@@ -52,10 +32,10 @@ export const App = (props: any) => {
     // loadCustomTemplate(BaseTemplate)
   }
 
-  const onReady = () => {
-    // editor is ready
-    console.log('onReady');
-  };
+  // const onReady = () => {
+  //   // editor is ready
+  //   console.log('onReady');
+  // };
 
   const templates = {
     FirstFranklinBase: FirstFranklinBase,
